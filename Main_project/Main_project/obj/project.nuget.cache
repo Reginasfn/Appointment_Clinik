@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3v4bzN7i0Ao=",
+  "dgSpecHash": "AqVsaUNfOFs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Регина\\Desktop\\Сафина\\Main_project\\Main_project\\Main_project.csproj",
+  "projectFilePath": "C:\\Users\\Регина\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Main_project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Регина\\.nuget\\packages\\extended.wpf.toolkit\\4.7.25104.5739\\extended.wpf.toolkit.4.7.25104.5739.nupkg.sha512",
     "C:\\Users\\Регина\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

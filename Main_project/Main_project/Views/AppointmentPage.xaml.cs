@@ -148,7 +148,7 @@ namespace Main_project.Views
                     }
                     availableAppointmentsList.ItemsSource = appointmentsAll;
                     
-                    //если слотов нет
+                    //какашка
                     NoAppointmentsText.Visibility = appointmentsAll.Count == 0 ? Visibility.Visible : Visibility.Hidden;
                 }
             }

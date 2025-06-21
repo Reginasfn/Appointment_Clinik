@@ -72,7 +72,7 @@ namespace Main_project.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Main_project;component/views/specialtiespage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Main_project;V1.0.0.0;component/views/specialtiespage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\SpecialtiesPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Main_project.Controllers.SpecialtyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Main_project.Controllers"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="360" MinHeight="345" MinWidth="370">
+    <Border BorderBrush="#FF719ABD" BorderThickness="5" CornerRadius="3">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28*"/>
+                <RowDefinition Height="110*"/>
+                <RowDefinition Height="169*"/>
+                <RowDefinition Height="28*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="{Binding DisplayIconSpecialty}" 
+                   Grid.Row="1" Grid.Column="1"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Width="85" Height="85" />
+            
+            <TextBlock x:Name="selectedSpecialtyTxtbx" Text="{Binding NameSpecialty}" 
+                       FontFamily="Source Code Pro Black" 
+                       FontWeight="DemiBold" Margin="0 20" 
+                       FontSize="26" 
+                       HorizontalAlignment="Center" 
+                       Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"/>
+            
+            <Button Click="Click_toAppointment" 
+                    Content="Записаться"
+                    FontFamily="Source Code Pro Black" 
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"  
+                    FontWeight="Bold" 
+                    FontSize="22" 
+                    Width="170" Height="50" 
+                    Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" 
+                    Cursor="Hand"/>
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,62 @@
+﻿<Page x:Class="Main_project.Views.SpecialtiesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Main_project.Views"
+      mc:Ignorable="d" 
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        d:DesignHeight="450" d:DesignWidth="1280"
+  Title="SpecialtiesPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="searchtbox"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 FontFamily="Source Code Pro Medium"
+                 FontSize="22"
+                 Background="#FFDCE3F4"
+                 Foreground="Black"
+                 TextChanged="searchtxtbox_TextChanged"
+                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                 md:HintAssist.Hint=" 🔎  Введите направление врача"/>
+
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListView x:Name="specialtyListView"
+                  Grid.Row="0" Grid.Column="1"
+                  Background="Pink"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Margin="0 20 0 0">
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel 
+                    Orientation="Horizontal"
+                    Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                    ItemWidth="390" ItemHeight="360"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

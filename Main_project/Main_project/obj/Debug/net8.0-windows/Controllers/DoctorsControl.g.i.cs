@@ -77,7 +77,7 @@ namespace Main_project.Controllers {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Main_project;V1.0.0.0;component/controllers/doctorscontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Main_project;component/controllers/doctorscontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controllers\DoctorsControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

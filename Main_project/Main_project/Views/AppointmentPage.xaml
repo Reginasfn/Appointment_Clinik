@@ -69,7 +69,6 @@
                       DisplayDateChanged="appointmentCalendar_DisplayDateChanged"
                       Language="ru-RU"
                       Background="White" Foreground="Blue" FontSize="26" FontFamily="Source Code Pro Black">
-
             </Calendar>
 
 

@@ -24,9 +24,12 @@ namespace Main_project.Views
     {
         Specialty selectedSpecialty;
         Doctor currDoctor;
-        Schedule currSchedule;
+        //Schedule currSchedule;
         public AppointmentPage(Specialty spec, Doctor doct)
         {
+            
+            if (spec == null || doct == null) return;
+                    
             currDoctor = doct;
             selectedSpecialty = spec;
 
@@ -43,48 +46,60 @@ namespace Main_project.Views
 
         private void CalendarLimit()
         {
-            DateTime startDate = DateTime.Today;
-            DateTime endDate = DateTime.Today.AddDays(14); //запись на ближ 2 недель
-
-            calendarSelectedDateTxt.Text = "Дата: " + DateTime.Today.ToShortDateString();
-
-            appointmentCalendar.DisplayDateStart = startDate;
-            appointmentCalendar.DisplayDateEnd = endDate;
-
-            if (currDoctor != null) //если врач выбран
+            try
             {
-                NoAppointmentsText.Visibility = Visibility.Visible;
+                DateTime startDate = DateTime.Today;
+                DateTime endDate = DateTime.Today.AddDays(14); //запись на ближ 2 недель
 
-                using (var db = new DbAppontmentClinikContext())
+                calendarSelectedDateTxt.Text = "Дата: " + DateTime.Today.ToShortDateString();
+
+                appointmentCalendar.DisplayDateStart = startDate;
+                appointmentCalendar.DisplayDateEnd = endDate;
+
+                if (currDoctor != null) //если врач выбран
                 {
-                    var scheduleDays = db.Schedules.Where(s => s.IdDoctor == currDoctor.IdDoctor).Select(sc => sc.DayWeek).ToList();
+                    NoAppointmentsText.Visibility = Visibility.Visible;
 
-                    for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+                    using (var db = new DbAppontmentClinikContext())
                     {
-                        string dayOfWeekString = date.ToString("ddd", new CultureInfo("ru-RU"));
-                        dayOfWeekString = dayOfWeekString.Substring(0, 1).ToUpper() + dayOfWeekString.Substring(1).ToLower();
+                        var scheduleDays = db.Schedules.Where(s => s.IdDoctor == currDoctor.IdDoctor).Select(sc => sc.DayWeek).ToList();
 
-                        if (!scheduleDays.Contains(dayOfWeekString)) //блок если дня нет в расписании
+                        for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
                         {
-                            appointmentCalendar.BlackoutDates.Add(new CalendarDateRange(date));
-                        }
-                        if (date.DayOfWeek == DayOfWeek.Sunday) //блок воскресенья
-                        {
-                            appointmentCalendar.BlackoutDates.Add(new CalendarDateRange(date));
+                            string dayOfWeekString = date.ToString("ddd", new CultureInfo("ru-RU"));
+                            dayOfWeekString = dayOfWeekString.Substring(0, 1).ToUpper() + dayOfWeekString.Substring(1).ToLower();
+
+                            if (!scheduleDays.Contains(dayOfWeekString)) //блок если дня нет в расписании
+                            {
+                                appointmentCalendar.BlackoutDates.Add(new CalendarDateRange(date));
+                            }
+                            if (date.DayOfWeek == DayOfWeek.Sunday) //блок воскресенья
+                            {
+                                appointmentCalendar.BlackoutDates.Add(new CalendarDateRange(date));
+                            }
                         }
                     }
                 }
+                else //если врач не выбран
+                {
+                    appointmentCalendar.IsEnabled = false;
+                }
             }
-            else //если врач не выбран
+            catch (Exception ex)
             {
+                MessageBox.Show($"Ошибка в ограничении календаря: {ex.Message}");
                 appointmentCalendar.IsEnabled = false;
             }
         }
 
         private void Back_button_Click(object sender, RoutedEventArgs e)
         {
-            ClinikMainWindow mainWindow = Application.Current.MainWindow as ClinikMainWindow;
-            mainWindow.mainframe.NavigationService.Navigate(new AllSpecialtiesPage(selectedSpecialty));
+            if (Application.Current.MainWindow is not ClinikMainWindow mainWindow)
+            {
+                MessageBox.Show("Ошибка навигации");
+                return;
+            }
+            mainWindow.mainframe.NavigationService?.Navigate(new AllSpecialtiesPage(selectedSpecialty));
         }
 
         private void appointmentCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -94,64 +109,77 @@ namespace Main_project.Views
 
         private void LoadAvailableAppointments()
         {
-            if (appointmentCalendar.SelectedDate.HasValue) //если выбрана дата
+            if (!appointmentCalendar.SelectedDate.HasValue) return;
+            if (currDoctor == null) return;
+
+            try
             {
-                DateTime selectedDate = appointmentCalendar.SelectedDate.Value;
-                string dayOfWeek = selectedDate.ToString("ddd", new CultureInfo("ru-RU"));
-                dayOfWeek = dayOfWeek.Substring(0, 1).ToUpper() + dayOfWeek.Substring(1).ToLower(); //пн => Пн
+                var selectedDate = appointmentCalendar.SelectedDate.Value.Date;
+                var dayOfWeek = CultureInfo.GetCultureInfo("ru-RU").DateTimeFormat.GetAbbreviatedDayName(selectedDate.DayOfWeek);
+                dayOfWeek = char.ToUpper(dayOfWeek[0]) + dayOfWeek.Substring(1).ToLower();
 
-                calendarSelectedDateTxt.Text = "Дата: " + appointmentCalendar.SelectedDate.Value.ToShortDateString();
-                
-                using (var db = new DbAppontmentClinikContext())
+                calendarSelectedDateTxt.Text = $"Дата: {selectedDate:d}";
+
+                using var db = new DbAppontmentClinikContext();
+                if (db == null) { MessageBox.Show("Ошибка в подключении к базе данных"); return; }
+
+                var schedule = db.Schedules.FirstOrDefault(s => s.IdDoctor == currDoctor.IdDoctor && s.DayWeek == dayOfWeek);
+
+                //если нет расписания для этого дня
+                if (schedule == null)
                 {
-                    var schedule = db.Schedules.Where(s => s.IdDoctor == currDoctor.IdDoctor && s.DayWeek == dayOfWeek).FirstOrDefault();
+                    availableAppointmentsList.ItemsSource = null; //пустой список
+                    NoAppointmentsText.Visibility = Visibility.Visible; //записи отсутсвуют
+                    return;
+                }
 
-                    //если нет расписания для этого дня
-                    if (schedule == null) 
+                //длит-ть приёма, по умолчанию 15
+                var time_accept = db.Specialties
+                    .Where(d => d.IdSpecialty == currDoctor.IdSpecialty)
+                    .Select(t => t.TimeAccept)
+                    .FirstOrDefault() ?? 15;
+
+                //записи в опред день
+                var existingApp = db.Appointments
+                    .Where(a => a.IdDoctor == currDoctor.IdDoctor &&
+                                a.DateAppointment == DateOnly.FromDateTime(selectedDate) && a.TimeAppointment.HasValue)
+                    .Select(a => a.TimeAppointment!.Value)
+                    .ToList();
+
+                var availableAppList = GenerateTimeApp(selectedDate.Add(schedule.TimeStart.ToTimeSpan()),
+                                                        selectedDate.Add(schedule.TimeEnd.ToTimeSpan()),
+                                                        TimeSpan.FromMinutes((double)time_accept),
+                                                        existingApp);
+
+                availableAppointmentsList.ItemsSource = availableAppList;
+                NoAppointmentsText.Visibility = availableAppList.Count == 0 ? Visibility.Visible : Visibility.Hidden;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки записей: {ex.Message}");
+                availableAppointmentsList.ItemsSource = null;
+                NoAppointmentsText.Visibility = Visibility.Visible;
+            }
+        }
+
+        private List<Schedule> GenerateTimeApp(DateTime startTime, DateTime endTime, TimeSpan interval, List<TimeOnly> bookedTimes)
+        {
+            var appList = new List<Schedule>();
+            if (startTime >= endTime) return appList;
+            if (interval <= TimeSpan.Zero) return appList;
+
+            //генерация слотов с интервалом и проверкой на занятость
+            for (var i = startTime; i <= endTime; i = i + interval)
+            {
+                if (!bookedTimes.Contains(TimeOnly.FromDateTime(i)))
+                {
+                    appList.Add(new Schedule
                     {
-                        availableAppointmentsList.ItemsSource = new List<Schedule>(); //пустой список
-                        NoAppointmentsText.Visibility = Visibility.Visible; //записи отсутсвуют
-                        return;
-                    }
-
-                    TimeOnly startTimeOnly = schedule.TimeStart;
-                    TimeOnly endTimeOnly = schedule.TimeEnd;
-
-                    DateTime startTime1 = selectedDate.Add(startTimeOnly.ToTimeSpan());
-                    DateTime endTime1 = selectedDate.Add(endTimeOnly.ToTimeSpan());
-
-                    DateTime currentTime = startTime1;
-
-                    //длит-ть приёма
-                    var time_accept = db.Specialties.Where(d => d.IdSpecialty == currDoctor.IdSpecialty).Select(t => t.TimeAccept).FirstOrDefault();
-
-                    var appointmentsAll = new List<Schedule>();
-
-                    //создание слотов с интервалом
-                    while (currentTime <= endTime1)
-                    {
-                        //bool appointmentExist = db.Appointments.Any(d => 
-                        //        d.IdDoctor == currDoctor.IdDoctor && 
-                        //        appointmentCalendar.SelectedDate.Value.ToShortDateString() == d.DateAppointment.ToString() &&
-                        //        d.TimeAppointment == TimeOnly.FromDateTime(currentTime) &&
-                        //        (d.StatusAppointment == null || d.StatusAppointment != "Завершён"));
-
-                        //// Если записи нет, добавляем
-                        //if (!appointmentExist)
-                        //{
-                        appointmentsAll.Add(new Schedule
-                        {
-                            TimeStart = TimeOnly.FromDateTime(currentTime)
-                        });
-                        currentTime = currentTime.AddMinutes(Convert.ToInt64(time_accept));
-                        //}
-                    }
-                    availableAppointmentsList.ItemsSource = appointmentsAll;
-                    
-                    //какашка
-                    NoAppointmentsText.Visibility = appointmentsAll.Count == 0 ? Visibility.Visible : Visibility.Hidden;
+                        TimeStart = TimeOnly.FromDateTime(i)
+                    });
                 }
             }
+            return appList;
         }
 
         private void bookAppointmentButton_Click(object sender, RoutedEventArgs e)

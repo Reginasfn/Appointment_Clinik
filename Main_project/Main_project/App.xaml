@@ -74,28 +74,6 @@
                 <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
                 <Setter Property="FontFamily" Value="Source Code Pro Black"/>
             </Style>
-
-            <Style x:Key="CalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}">
-                <Setter Property="Foreground" Value="Aqua" />
-                <!-- Цвет текста по умолчанию -->
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=DataContext.DayOfWeek}" Value="Saturday">
-                        <Setter Property="Foreground" Value="DimGray" />
-                        <!-- Цвет текста для субботы -->
-                        <!-- Или <Setter Property="Background" Value="LightYellow"/> -->
-                    </DataTrigger>
-                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=DataContext.DayOfWeek}" Value="Sunday">
-                        <Setter Property="Foreground" Value="DimGray" />
-                        <!-- Цвет текста для воскресенья -->
-                        <!-- Или <Setter Property="Background" Value="LightYellow"/> -->
-                    </DataTrigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="LightGray" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

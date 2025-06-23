@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\App.xaml
 9-1573730328
 
-20-1683831144
+21-671762752
 220-1928873199
 Controllers\DoctorsControl.xaml;Controllers\SpecialtyControl.xaml;Views\AboutClinik.xaml;Views\AllSpecialtiesPage.xaml;Views\AppointmentPage.xaml;Views\ClinikMainWindow.xaml;Views\ContactsClinik.xaml;Views\InformationDoctorPage.xaml;Views\SpecialtiesPage.xaml;
 
-False
+True
 

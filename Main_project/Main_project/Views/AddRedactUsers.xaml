@@ -1,0 +1,136 @@
+﻿<Page x:Class="Main_project.Views.AddRedactUsers"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Main_project.Views"
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddRedactUsers"
+      Background="#FFBCD2E3">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="#FF3F51B5" Padding="15" CornerRadius="0 0 20 20">
+            <TextBlock Text="Добавление/редактирование пользователя" 
+                       Foreground="White" 
+                       FontSize="25" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Effect="{StaticResource DropShadowEffect}"/>
+        </Border>
+
+        <!-- Основное содержимое -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Поля ввода -->
+                <TextBlock Text="Фамилия:" Grid.Row="1" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtSurname" Grid.Row="1" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Имя:" Grid.Row="2" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtName" Grid.Row="2" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Дата рождения:" Grid.Row="4" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <wpfx:MaskedTextBox Mask="00/00/0000" x:Name="dpBirthDate" Grid.Row="4" Grid.Column="1" 
+                          Margin="10" Height="30" FontSize="16"
+                          Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Email:" Grid.Row="5" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtEmail" Grid.Row="5" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Телефон:" Grid.Row="6" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtPhone" Grid.Row="6" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16" MaxLength="11"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Мед. полис:" Grid.Row="7" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtMedicalPolicy" Grid.Row="7" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16" MaxLength="16"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Паспорт:" Grid.Row="8" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txtPassport" Grid.Row="8" Grid.Column="1" 
+                         Margin="10" Height="30" FontSize="16" MaxLength="10"
+                         Style="{StaticResource TextBoxStyle}"/>
+
+                <TextBlock Text="Роль:" Grid.Row="9" Grid.Column="0" 
+                           Margin="10" VerticalAlignment="Center"
+                           Foreground="#FF035096" FontSize="16" FontWeight="Bold"/>
+                <ComboBox x:Name="cmbRole" Grid.Row="9" Grid.Column="1" 
+                          Margin="10" Height="30" FontSize="16"
+                          Style="{StaticResource ComboBoxStyle}"/>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal" 
+                            HorizontalAlignment="Center" Margin="0,20">
+                    <Button x:Name="btnSave" Content="Сохранить" 
+                            Width="150" Height="40" Margin="10"
+                            FontSize="16" FontWeight="Bold"
+                            Background="#FF035096" Foreground="White"
+                            BorderBrush="#FF035096" BorderThickness="1"
+                            Click="btnSave_Click">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="2" Direction="0" Color="#FF0063BD" Opacity="0.7" BlurRadius="5"/>
+                        </Button.Effect>
+                    </Button>
+
+                    <Button x:Name="btnCancel" Content="Отмена" 
+                            Width="150" Height="40" Margin="10"
+                            FontSize="16" FontWeight="Bold"
+                            Background="#FFE3F2FD" Foreground="#FF035096"
+                            BorderBrush="#FF035096" BorderThickness="1"
+                            Click="btnCancel_Click">
+                        <Button.Effect>
+                            <DropShadowEffect ShadowDepth="2" Direction="0" Color="#FF0063BD" Opacity="0.7" BlurRadius="5"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

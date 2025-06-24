@@ -1,0 +1,65 @@
+﻿<Page x:Class="Main_project.Views.AdminAuth"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Main_project.Views"
+      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminAuth">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Foreground="#FF002558" 
+               Text="Вход только для администраторов." 
+               FontFamily="Source Code Pro Black" 
+               FontSize="32"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="email_txtbx" 
+                Grid.Row="1"
+                FontFamily="Source Code Pro Medium"
+                FontSize="22"
+                Background="#FFDCE3F4"
+                Foreground="Black"
+                Height="60" Width="330"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                md:HintAssist.Hint="Эл. почта"
+                VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="3"/>
+
+        <TextBox x:Name="code_txtbx" 
+                Grid.Row="2"
+                FontFamily="Source Code Pro Medium"
+                FontSize="22"
+                Background="#FFDCE3F4"
+                Foreground="Black"
+                Height="60" Width="330"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                md:HintAssist.Hint="Код подтверждения"
+                VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="3"/>
+
+        <Button x:Name="code_button" Grid.Row="4"
+                                FontFamily="Source Code Pro Medium" FontSize="22"
+                                Height="60" Width="330"
+                                VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                Content="Получить код" Click="code_button_Click"/>
+
+        <Button x:Name="enter_button" Grid.Row="6"
+                                FontFamily="Source Code Pro Medium" FontSize="22"
+                                Height="60" Width="330"
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                Content="Войти" Click="enter_button_Click"/>
+
+    </Grid>
+</Page>

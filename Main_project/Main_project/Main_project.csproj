@@ -12,6 +12,7 @@
     <None Remove="Resources\allergy.png" />
     <None Remove="Resources\cardiology.png" />
     <None Remove="Resources\dermatology.png" />
+    <None Remove="Resources\Doctors\default_doctor.png" />
     <None Remove="Resources\Doctors\filinova.jpg" />
     <None Remove="Resources\Doctors\IconDoctor.jpg" />
     <None Remove="Resources\Doctors\IconDoctor2.jpg" />
@@ -59,6 +60,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\dermatology.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Doctors\default_doctor.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Doctors\filinova.jpg">

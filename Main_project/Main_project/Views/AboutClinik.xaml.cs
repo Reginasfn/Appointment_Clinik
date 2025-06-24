@@ -24,7 +24,6 @@ namespace Main_project.Views
         {
             ClinikMainWindow mainWindow = Application.Current.MainWindow as ClinikMainWindow;
             mainWindow.Title = "О клинике";
-
             InitializeComponent();
         }
     }

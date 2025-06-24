@@ -35,6 +35,20 @@
                 </Image.Effect>
             </Image>
 
+            <TextBlock Text="Админ" Name="Admin_panel"
+                       Foreground="White" 
+                       FontSize="25" 
+                       Margin="340,0,0,0" 
+                       Grid.Column="1" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       MouseLeftButtonDown="Admin_panel_MouseLeftButtonDown"
+                       Style="{StaticResource TextBlockStyle}">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="0" Color="#FF0063BD" Opacity="1" BlurRadius="10"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
             <TextBlock Text="О клинике" 
                        Name="Click_aboutClinik"
                        Foreground="White" 

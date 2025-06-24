@@ -158,12 +158,6 @@ public partial class DbAppontmentClinikContext : DbContext
             entity.ToTable("users");
 
             entity.Property(e => e.IdMedCard).HasColumnName("id_med_card");
-            entity.Property(e => e.AddressRegistration)
-                .HasMaxLength(100)
-                .HasColumnName("address_registration");
-            entity.Property(e => e.Comments)
-                .HasColumnType("text")
-                .HasColumnName("comments");
             entity.Property(e => e.DateBirth).HasColumnName("date_birth");
             entity.Property(e => e.EmailUsers)
                 .HasMaxLength(100)
@@ -177,21 +171,12 @@ public partial class DbAppontmentClinikContext : DbContext
             entity.Property(e => e.PassportNumber)
                 .HasMaxLength(10)
                 .HasColumnName("passport_number");
-            entity.Property(e => e.PasswordUsers)
-                .HasMaxLength(60)
-                .HasColumnName("password_users");
-            entity.Property(e => e.PatronymicUsers)
-                .HasMaxLength(50)
-                .HasColumnName("patronymic_users");
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(11)
                 .HasColumnName("phone_number");
             entity.Property(e => e.RoleIdUsers)
                 .HasColumnType("enum('Администратор','Пользователь')")
                 .HasColumnName("role_id_users");
-            entity.Property(e => e.SnilsNumber)
-                .HasMaxLength(11)
-                .HasColumnName("snils_number");
             entity.Property(e => e.SurnameUsers)
                 .HasMaxLength(50)
                 .HasColumnName("surname_users");

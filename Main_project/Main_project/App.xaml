@@ -2,6 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Main_project"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="\Views\ClinikMainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -74,6 +75,60 @@
                 <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
                 <Setter Property="FontFamily" Value="Source Code Pro Black"/>
             </Style>
+            <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                <Setter Property="Background" Value="#FFE3F2FD"/>
+                <Setter Property="BorderBrush" Value="#FF035096"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Foreground" Value="#FF002558"/>
+                <Setter Property="FontFamily" Value="Source Code Pro"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="1" Direction="0" Color="#FF0063BD" Opacity="0.3" BlurRadius="3"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+                <Setter Property="Background" Value="#FFE3F2FD"/>
+                <Setter Property="BorderBrush" Value="#FF035096"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Foreground" Value="#FF002558"/>
+                <Setter Property="FontFamily" Value="Source Code Pro"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect ShadowDepth="1" Direction="0" Color="#FF0063BD" Opacity="0.3" BlurRadius="3"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <DropShadowEffect x:Key="DropShadowEffect" ShadowDepth="1" Direction="0" Color="#FF0063BD" Opacity="1" BlurRadius="10"/>
+            
+            <Style x:Key="RussianTimePicker" TargetType="md:TimePicker" BasedOn="{StaticResource MaterialDesignFloatingHintTimePicker}">
+                <Setter Property="Language" Value="ru-RU"/>
+                <Setter Property="Is24Hours" Value="True"/>
+                <Setter Property="Background" Value="#FFE3F2FD"/>
+                <Setter Property="BorderBrush" Value="#FF035096"/>
+                <Setter Property="Foreground" Value="#FF035096"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Height" Value="36"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="md:HintAssist.Hint" Value="ЧЧ:ММ"/>
+                <Setter Property="md:HintAssist.HelperTextFontSize" Value="12"/>
+                <Setter Property="md:HintAssist.FloatingScale" Value="0.8"/>
+                <!--<Setter Property="ClockIdentifier" Value="24HourClock"/>
+                <Setter Property="TextAlignment" Value="Center"/>-->
+            </Style>
+            
+            <Style TargetType="{x:Type md:Clock}">
+                <Setter Property="Language" Value="ru-RU"/>
+            </Style>
+
+            <Style TargetType="{x:Type md:TimePickerTextBox}">
+                <Setter Property="Language" Value="ru-RU"/>
+                <Setter Property="FontFamily" Value="Source Code Pro"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>

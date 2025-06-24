@@ -94,11 +94,11 @@
                                   FontWeight="Bold"
                                   FontFamily="Source Code Pro Medium"
                                   SelectionChanged="AvailableAppointmentsList_SelectionChanged">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Время" DisplayMemberBinding="{Binding TimeStart, StringFormat='HH:mm'}"/>
-                                    </GridView>
-                                </ListView.View>
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Время" DisplayMemberBinding="{Binding TimeStart, StringFormat='HH:mm'}"/>
+                                        </GridView>
+                                    </ListView.View>
                             </ListView>
                         </ScrollViewer>
 
@@ -134,14 +134,11 @@
                             <RowDefinition Height="3*"/>
                             <RowDefinition Height="1.5*"/>
                             <RowDefinition Height="3*"/>
-                            <RowDefinition Height="1.5*"/>
-                            <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
                         <StackPanel Height="15" Grid.Row="0"/>
                         <StackPanel Height="50" Grid.Row="2"/>
                         <StackPanel Height="50" Grid.Row="4"/>
                         <StackPanel Height="50" Grid.Row="6"/>
-                        <StackPanel Height="50" Grid.Row="8" Background="Red"/>
 
                         <TextBox x:Name="name_user_txtbx" TextChanged="name_surname_TextChanged"
                                  Grid.Row="1"
@@ -240,9 +237,9 @@
                                 Margin="0,50,0,50"
                                 Click="BookAppointmentButton_Click" Cursor="Hand"/>
 
-                    </Grid>
+                        <TextBlock Text="© 2025 Медицинский центр R-Med. Все права защищены. Версия 0.1.0" FontSize="18" FontFamily="Source Code Pro Medium" HorizontalAlignment="Center" Margin="0,30,0,-10" VerticalAlignment="Bottom" Grid.Row="7" Height="30"/>
 
-                    <StackPanel Grid.Row="2" Grid.Column="0" Height="50" Width="1000" Background="Red"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

@@ -279,3 +279,17 @@ C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Main_project.pdb
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Main_project.genruntimeconfig.cache
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\ref\Main_project.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\EndAppointment.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\EndAppointment.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AdminAuth.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AdminAuth.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\Admin_panel.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\Admin_panel.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactDoctors.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactDoctors.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactUsers.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactUsers.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSpecialities.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSpecialities.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSched.g.cs
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSched.baml

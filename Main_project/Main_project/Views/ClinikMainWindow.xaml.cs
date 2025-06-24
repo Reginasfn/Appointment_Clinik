@@ -1,48 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Main_project.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Main_project.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для ClinikMainWindow.xaml
-    /// </summary>
     public partial class ClinikMainWindow : Window
     {
         public ClinikMainWindow()
         {
             InitializeComponent();
+            UpdateAppointmentStatuses();
             mainframe.NavigationService.Navigate(new SpecialtiesPage());
         }
 
+        private void UpdateAppointmentStatuses()
+        {
+            try
+            {
+                using (var db = new DbAppontmentClinikContext())
+                {
+                    var currentDate = DateOnly.FromDateTime(DateTime.Now);
+                    var currentTime = TimeOnly.FromDateTime(DateTime.Now);
+                    var appointmentsToUpdate = db.Appointments.Where(a => (a.DateAppointment < currentDate ||(a.DateAppointment == currentDate && a.TimeAppointment <= currentTime)) &&(a.StatusAppointment == null || a.StatusAppointment != "Завершён")).ToList();
+                    foreach (var appointment in appointmentsToUpdate)
+                    {
+                        appointment.StatusAppointment = "Завершён";
+                    }
+
+                    if (appointmentsToUpdate.Any())
+                    {
+                        int changes = db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при обновлении статусов записей: {ex.Message}\n\n{ex.InnerException?.Message}",
+                              "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
         private void Click_aboutClinik_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mainframe.NavigationService.Navigate(new AboutClinik());
         }
-
         private void Click_contactsClinik_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mainframe.NavigationService.Navigate(new ContactsClinik());
         }
-
         private void Click_appointmentClinik_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             mainframe.NavigationService.Navigate(new SpecialtiesPage());
         }
-
         private void mainframe_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
 
+        }
+        private void Admin_panel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            mainframe.NavigationService.Navigate(new AdminAuth());
         }
     }
 }

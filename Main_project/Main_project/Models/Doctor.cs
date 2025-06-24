@@ -32,7 +32,7 @@ public partial class Doctor
     public virtual Specialty IdSpecialtyNavigation { get; set; } = null!;
 
     public virtual ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
-    public string DisplayIconDoctor => (System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\..")) + "\\Resources\\Doctors\\" + ((IconDoctor == null || string.IsNullOrEmpty(IconDoctor)) ? "IconDoctor2.jpg" : IconDoctor);
+    public string DisplayIconDoctor => (System.IO.Path.Combine(Environment.CurrentDirectory, @"..\..\..")) + "\\Resources\\Doctors\\" + ((IconDoctor == null || string.IsNullOrEmpty(IconDoctor)) ? "default_doctor.png" : IconDoctor);
     public string DisplayNameDoctor => $"{SurnameDoctor} {NameDoctor} {PatronymicDoctor}";
     public string DisplayMedExperience => $"Мед. стаж: {MedicalExperience}";
     public string DisplayStatusWork => string.IsNullOrEmpty(StatusWork) ? $"Статус работы: По графику" : $"Статус работы: {StatusWork}";

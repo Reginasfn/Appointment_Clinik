@@ -62,14 +62,6 @@ namespace Main_project.Scripts
             string formattedDate = appointment.Value.ToString("dd.MM.yyyy");
             string formattedTime = appointment.Value.ToString("HH:mm");
 
-            string body1 = $"Здравствуйте!\r\n\r\n" +
-                          $"Рады приветствовать вас в нашем сервисе Киноман!\r\n" +
-                          $"Мы очень признательны вам за то, что вы зарегистрировались в нашем сервисе.\r\n\r\n" +
-                          $"Также будем очень благодарны, если мы будем получать от вас обратную связь в случае багов и прочего.\r\n\r\n\r\n" +
-                          $"Дата и время регистрации: {formattedDate}, {formattedTime}\r\n" +
-                          $"Почта для обратной связи: kinomancorp@mail.ru.\r\n\r\n" +
-                          $"С уважением,\r\nКиноман Корп.";
-
             string body = $@"
             <!DOCTYPE html>
             <html>
@@ -127,23 +119,15 @@ namespace Main_project.Scripts
                         </div>
                     </div>
     
-                    <div class='content' style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;'>
-                        <div style='background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); padding: 20px; text-align: center; border-radius: 8px 8px 0 0;'>
-                            <h1 style='color: white; margin: 0;"">Добро пожаловать в нашу клинику!</h1>
-                        </div>
-    
-                        <div style='padding: 25px; background-color: #f9f9f9; border-radius: 0 0 8px 8px; border: 1px solid #e0e0e0;'>
-                            <h2 style='color: #2575fc; margin-top: 0;'>Уважаемый(ая) {name}!</h2>
+                    <div class='content'>
+                        <h1 style='color: #4a8bfc; text-align: center;'>Добро пожаловать в нашу клинику!</h1>
+                        <h1>Уважаемый(ая) {name}!</h1>
+                        <h3>Мы рады сообщить, что вы успешно прикреплены к нашей клинике. Теперь вы можете 
+                                записываться на прием к нашим специалистам в любое удобное время.</h3>
         
-                            <p style=""font-size: 16px; line-height: 1.6;"">
-                                Мы рады сообщить, что вы успешно прикреплены к нашей клинике. Теперь вы можете 
-                                записываться на прием к нашим специалистам в любое удобное время.
-                            </p>
-        
-                            <div style='background-color: #e8f4ff; padding: 15px; border-radius: 6px; margin: 20px 0;'>
-                                <p style='margin: 5px 0;'><strong>Ваш номер медицинской карты:</strong> {id}</p>
-                                <p style='margin: 5px 0;'><strong>Дата прикрепления:</strong> {DateTime.Now.ToShortDateString()}</p>
-                            </div>
+                        <div style='background-color: #e8f4ff; padding: 15px; border-radius: 6px; margin: 20px 0;'>
+                            <p style='margin: 5px 0;'><strong>Ваш номер медицинской карты:</strong> {id}</p>
+                            <p style='margin: 5px 0;'><strong>Дата прикрепления:</strong> {DateTime.Now.ToShortDateString()}</p>
                         </div>
                     </div>
     
@@ -160,7 +144,19 @@ namespace Main_project.Scripts
             return new List<string> { title, body };
         }
 
-        //письмо с кодом подтверждения
+        //письмо с кодом подтверждения GenerateVerificateMessageAdmin
+        public static List<string> GenerateVerificateMessageAdmin(DateTime? appointment, string verificationCode)
+        {
+            string formattedDate = appointment.Value.ToString("dd.MM.yyyy");
+            string formattedTime = appointment.Value.ToString("HH:mm");
+
+            string body = $"Администратор, добро пожаловать!\r\n\r\n" +
+                          $"Код подтверждения: {verificationCode}\r\n\r\n\r\n";
+
+            string title = $"Ваш код подтверждения R-Med";
+
+            return new List<string> { title, body };
+        }
         public static List<string> GenerateVerificateMessage(DateTime? appointment, string verificationCode)
         {
             string formattedDate = appointment.Value.ToString("dd.MM.yyyy");

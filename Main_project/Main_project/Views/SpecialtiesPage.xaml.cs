@@ -1,40 +1,21 @@
 ﻿using Main_project.Controllers;
 using Main_project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace Main_project.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для SpecialtiesPage.xaml
-    /// </summary>
     public partial class SpecialtiesPage : Page
     {
-        public List<Specialty> allSpecialties { get; set; } // Оригинальный список
-        public List<Specialty> selectedSpecialty { get; set; } // Список для отображения
+        public List<Specialty> allSpecialties { get; set; }
+        public List<Specialty> selectedSpecialty { get; set; }
         public SpecialtiesPage()
         {
             InitializeComponent();
-
             ClinikMainWindow mainWindow = Application.Current.MainWindow as ClinikMainWindow;
             mainWindow.Title = "Запись на приём";
-
             LoadSpecialty();
             UpdateSpecialtyListView();
         }
-
         private void LoadSpecialty()
         {
             using (var db = new DbAppontmentClinikContext())
@@ -44,7 +25,6 @@ namespace Main_project.Views
             selectedSpecialty = allSpecialties.ToList();
             UpdateSpecialtyListView();
         }
-
         private void UpdateSpecialtyListView()
         {
             specialtyListView.Items.Clear();
@@ -54,7 +34,6 @@ namespace Main_project.Views
                 specialtyListView.Items.Add(specItem);
             }
         }
-
         private void searchtxtbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var search = searchtbox.Text?.ToLower();
@@ -67,7 +46,6 @@ namespace Main_project.Views
             {
                 selectedSpecialty = allSpecialties.ToList();
             }
-
             UpdateSpecialtyListView();
         }
     }

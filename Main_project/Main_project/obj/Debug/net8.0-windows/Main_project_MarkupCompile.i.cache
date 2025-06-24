@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\App.xaml
-9-1573730328
+16-767482550
 
-21-671762752
+28788849825
 220-1928873199
-Controllers\DoctorsControl.xaml;Controllers\SpecialtyControl.xaml;Views\AboutClinik.xaml;Views\AllSpecialtiesPage.xaml;Views\AppointmentPage.xaml;Views\ClinikMainWindow.xaml;Views\ContactsClinik.xaml;Views\InformationDoctorPage.xaml;Views\SpecialtiesPage.xaml;
+Controllers\DoctorsControl.xaml;Controllers\SpecialtyControl.xaml;Views\AboutClinik.xaml;Views\AddRedactDoctors.xaml;Views\AddRedactSched.xaml;Views\AddRedactSpecialities.xaml;Views\AddRedactUsers.xaml;Views\AdminAuth.xaml;Views\Admin_panel.xaml;Views\AllSpecialtiesPage.xaml;Views\AppointmentPage.xaml;Views\ClinikMainWindow.xaml;Views\ContactsClinik.xaml;Views\EndAppointment.xaml;Views\InformationDoctorPage.xaml;Views\SpecialtiesPage.xaml;
 
-True
+False
 

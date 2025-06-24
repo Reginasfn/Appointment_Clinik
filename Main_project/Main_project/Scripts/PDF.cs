@@ -87,7 +87,7 @@ namespace Main_project.Scripts
                     yPosition += 15;
 
                     // Компактная контактная информаци
-                    gfx.DrawString("Если ВЫ не можете прийти на приём в указанное время, \nсообщите об этом по телефону: +7-900-000-001",
+                    gfx.DrawString("Если ВЫ не можете прийти на приём в указанное время, \nсообщите об этом по телефону: +7 (347) 201-10-86",
                         smallInfoFont, XBrushes.Gray,
                         new XRect(centerX - contentWidth / 2, yPosition, contentWidth, 0),
                         XStringFormats.TopLeft);
@@ -117,16 +117,13 @@ namespace Main_project.Scripts
                 });
             }
         }
-        public static void CreateTodaysAppointmentsPdf()
+        public static void CreateTodaysAppointmentsPdf(string doctorFullName)
         {
             using var db = new DbAppontmentClinikContext();
-
-            string doctorSpecialization = "Терапевт";
-            string doctorFullName = "Быкова Лариса Петровна";
             string clinicAddress = "г. Уфа, ул. Ленина, 75";
 
-            // Получаем список сегодняшних записей
-            var appointments = GetDoctorAppointments(doctorFullName);
+            // Получаем список сегодняшних записей с датой рождения
+            var appointments = GetDoctorAppointmentsWithBirthDate(doctorFullName);
 
             string filePath = @"C:\Users\Регина\Desktop\TodaysAppointments.pdf";
 
@@ -136,94 +133,168 @@ namespace Main_project.Scripts
                 {
                     // Настройки шрифтов
                     var headerFont = new XFont("Segoe UI", 16, XFontStyle.Bold);
-                    var titleFont = new XFont("Segoe UI", 20, XFontStyle.Bold);
-                    var doctorInfoFont = new XFont("Segoe UI", 14, XFontStyle.Bold);
-                    var dateFont = new XFont("Segoe UI", 12, XFontStyle.Bold);
-                    var appointmentFont = new XFont("Segoe UI", 12);
-                    var smallInfoFont = new XFont("Segoe UI", 10);
+                    var titleFont = new XFont("Segoe UI", 18, XFontStyle.Bold);
+                    var infoFont = new XFont("Segoe UI", 12, XFontStyle.Italic);
+                    var tableHeaderFont = new XFont("Segoe UI", 12, XFontStyle.Bold);
+                    var tableContentFont = new XFont("Segoe UI", 11);
+                    var footerFont = new XFont("Segoe UI", 9);
+                    var smallInfoFont = new XFont("Segoe UI", 8, XFontStyle.Italic);
 
                     PdfPage page = document.AddPage();
                     XGraphics gfx = XGraphics.FromPdfPage(page);
                     double pageWidth = page.Width;
-                    double yPosition = 40;
+                    double yPosition = 30; // Начальная позиция
                     const double margin = 40;
 
                     // Заголовок документа
-                    gfx.DrawString("R-Med", headerFont, XBrushes.Black,
-                        new XRect(-30, yPosition, pageWidth, 0),
-                        XStringFormats.TopRight);
-                    yPosition += 40;
-
-                    // Заголовок
-                    gfx.DrawString("Сегодняшние записи на приём", titleFont, XBrushes.Black,
+                    gfx.DrawString("Медицинский центр R-Med", headerFont, XBrushes.Black,
                         new XRect(0, yPosition, pageWidth, 0),
                         XStringFormats.TopCenter);
-                    yPosition += 40;
+                    yPosition += 30;
 
-                    // Дата
+                    // Заголовок
                     string today = DateTime.Today.ToString("dd.MM.yyyy");
-                    gfx.DrawString($"Дата: {today}", dateFont, XBrushes.Black,
+                    gfx.DrawString($"Расписание приёмов на {today}", titleFont, XBrushes.Black,
+                        new XRect(0, yPosition, pageWidth, 0),
+                        XStringFormats.TopCenter);
+                    yPosition += 35;
+
+                    // Важная информация
+                    gfx.DrawString("Приём, за исключением экстренных больных, осуществляется строго по записи!", infoFont, XBrushes.Black,
+                        new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
+                        XStringFormats.TopLeft);
+                    yPosition += 20;
+
+                    gfx.DrawString($"В случае записи на приём, талон и документы должны быть заранее переданы врачу.", infoFont, XBrushes.Black,
+                        new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
+                        XStringFormats.TopLeft);
+                    yPosition += 20;
+
+                    gfx.DrawString("В случае превышения числа экстренных больных возможен «сдвиг» во времени приёма.", infoFont, XBrushes.Black,
                         new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
                         XStringFormats.TopLeft);
                     yPosition += 30;
 
                     // Информация о враче
-                    gfx.DrawString($"Врач: {doctorFullName}", doctorInfoFont, XBrushes.Black,
+                    gfx.DrawString($"Врач: {doctorFullName}", titleFont, XBrushes.Black,
                         new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
+                        XStringFormats.TopLeft);
+                    yPosition += 30;
+
+                    // Создаем таблицу
+                    double tableWidth = pageWidth - 2 * margin;
+                    double col1Width = tableWidth * 0.15;  // Время
+                    double col2Width = tableWidth * 0.45;  // ФИО
+                    double col3Width = tableWidth * 0.4;    // Дата рождения
+
+                    // Заголовки таблицы
+                    double tableYStart = yPosition;
+                    gfx.DrawString("Время", tableHeaderFont, XBrushes.Black,
+                        new XRect(margin, yPosition, col1Width, 20),
+                        XStringFormats.TopLeft);
+                    gfx.DrawString("Пациент (Ф.И.)", tableHeaderFont, XBrushes.Black,
+                        new XRect(margin + col1Width, yPosition, col2Width, 20),
+                        XStringFormats.TopLeft);
+                    gfx.DrawString("Дата рождения", tableHeaderFont, XBrushes.Black,
+                        new XRect(margin + col1Width + col2Width, yPosition, col3Width, 20),
                         XStringFormats.TopLeft);
                     yPosition += 25;
 
-                    gfx.DrawString($"Специализация: {doctorSpecialization}", doctorInfoFont, XBrushes.Black,
-                        new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
-                        XStringFormats.TopLeft);
-                    yPosition += 40;
-
-                    // Разделитель
-                    gfx.DrawLine(new XPen(XColors.Black, 0.5),
+                    // Линия под заголовком
+                    gfx.DrawLine(new XPen(XColors.Black, 1),
                         margin, yPosition,
-                        pageWidth - margin, yPosition);
-                    yPosition += 20;
+                        margin + tableWidth, yPosition);
+                    yPosition += 10;
 
-                    // Выводим сегодняшние записи
+                    // Заполняем таблицу данными
                     if (appointments.Any())
                     {
-                        gfx.DrawString("Расписание:", appointmentFont, XBrushes.Black,
-                            new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
-                            XStringFormats.TopLeft);
-                        yPosition += 25;
-
                         foreach (var app in appointments)
                         {
-                            gfx.DrawString($"{app.Time} - {app.PatientName}", appointmentFont, XBrushes.Black,
-                                new XRect(margin + 20, yPosition, pageWidth - 2 * margin, 0),
+                            // Проверяем, не вышли ли за пределы страницы
+                            if (yPosition > page.Height - 70) // Оставляем место для футера
+                            {
+                                // Создаем новую страницу
+                                page = document.AddPage();
+                                gfx = XGraphics.FromPdfPage(page);
+                                yPosition = 30;
+
+                                // Повторяем заголовок на новой странице
+                                gfx.DrawString("Медицинский центр R-Med", headerFont, XBrushes.Black,
+                                    new XRect(0, yPosition, pageWidth, 0),
+                                    XStringFormats.TopCenter);
+                                yPosition += 30;
+
+                                gfx.DrawString($"Расписание приёмов на {today} (продолжение)", titleFont, XBrushes.Black,
+                                    new XRect(0, yPosition, pageWidth, 0),
+                                    XStringFormats.TopCenter);
+                                yPosition += 35;
+
+                                // Заголовки таблицы на новой странице
+                                gfx.DrawString("Время", tableHeaderFont, XBrushes.Black,
+                                    new XRect(margin, yPosition, col1Width, 20),
+                                    XStringFormats.TopLeft);
+                                gfx.DrawString("Пациент (Ф.И.)", tableHeaderFont, XBrushes.Black,
+                                    new XRect(margin + col1Width, yPosition, col2Width, 20),
+                                    XStringFormats.TopLeft);
+                                gfx.DrawString("Дата рождения", tableHeaderFont, XBrushes.Black,
+                                    new XRect(margin + col1Width + col2Width, yPosition, col3Width, 20),
+                                    XStringFormats.TopLeft);
+                                yPosition += 25;
+
+                                gfx.DrawLine(new XPen(XColors.Black, 1),
+                                    margin, yPosition,
+                                    margin + tableWidth, yPosition);
+                                yPosition += 10;
+                            }
+
+                            // Содержимое таблицы
+                            gfx.DrawString(app.Time, tableContentFont, XBrushes.Black,
+                                new XRect(margin, yPosition, col1Width, 20),
+                                XStringFormats.TopLeft);
+                            gfx.DrawString(app.PatientName, tableContentFont, XBrushes.Black,
+                                new XRect(margin + col1Width, yPosition, col2Width, 20),
+                                XStringFormats.TopLeft);
+                            gfx.DrawString(app.BirthDate, tableContentFont, XBrushes.Black,
+                                new XRect(margin + col1Width + col2Width, yPosition, col3Width, 20),
                                 XStringFormats.TopLeft);
                             yPosition += 20;
+
+                            // Линия между записями
+                            gfx.DrawLine(new XPen(XColors.LightGray, 0.5),
+                                margin, yPosition,
+                                margin + tableWidth, yPosition);
+                            yPosition += 5;
                         }
                     }
                     else
                     {
-                        gfx.DrawString("На сегодня записей нет", appointmentFont, XBrushes.Black,
-                            new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
-                            XStringFormats.TopLeft);
-                        yPosition += 20;
+                        gfx.DrawString("На сегодня записей нет", tableContentFont, XBrushes.Black,
+                            new XRect(margin, yPosition, tableWidth, 20),
+                            XStringFormats.TopCenter);
+                        yPosition += 25;
                     }
 
-                    // Разделитель
-                    yPosition += 10;
+                    // Футер
+                    yPosition += 20;
                     gfx.DrawLine(new XPen(XColors.Black, 0.5),
                         margin, yPosition,
-                        pageWidth - margin, yPosition);
-                    yPosition += 20;
+                        margin + tableWidth, yPosition);
+                    yPosition += 10;
 
-                    // Адрес клиники
-                    gfx.DrawString($"Адрес: {clinicAddress}", smallInfoFont, XBrushes.Black,
-                        new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
+                    gfx.DrawString($"Адрес: {clinicAddress}", footerFont, XBrushes.Black,
+                        new XRect(margin, yPosition, tableWidth, 20),
                         XStringFormats.TopLeft);
-                    yPosition += 20;
+                    yPosition += 15;
 
-                    // Контактная информация
-                    gfx.DrawString("Телефон для справок: +7-900-000-001", smallInfoFont, XBrushes.Gray,
-                        new XRect(margin, yPosition, pageWidth - 2 * margin, 0),
+                    gfx.DrawString("Телефон регистратуры: +7 (347) 201-10-86", footerFont, XBrushes.Black,
+                        new XRect(margin, yPosition, tableWidth, 20),
+                        XStringFormats.TopLeft);
+                    yPosition += 15;
+
+                    // Конфиденциальность
+                    gfx.DrawString("В целях соблюдения конфиденциальности указаны только первые буквы Ф.И.", smallInfoFont, XBrushes.Gray,
+                        new XRect(margin, yPosition, tableWidth, 20),
                         XStringFormats.TopLeft);
 
                     document.Save(filePath);
@@ -251,7 +322,7 @@ namespace Main_project.Scripts
             }
         }
 
-        public static List<(string Time, string PatientName)> GetDoctorAppointments(string doctorFullName)
+        public static List<(string Time, string PatientName, string BirthDate)> GetDoctorAppointmentsWithBirthDate(string doctorFullName)
         {
             using var db = new DbAppontmentClinikContext();
 
@@ -259,8 +330,6 @@ namespace Main_project.Scripts
             string surname = nameParts[0];
             string name = nameParts[1];
             string patronymic = nameParts.Length > 2 ? nameParts[2] : null;
-
-            // Находим врача по ФИО
             var doctor = db.Doctors
                 .Where(d => d.SurnameDoctor == surname &&
                            d.NameDoctor == name &&
@@ -270,13 +339,9 @@ namespace Main_project.Scripts
             if (doctor == null)
             {
                 MessageBox.Show("Врач не найден");
-                return new List<(string, string)>();
+                return new List<(string, string, string)>();
             }
-
-            // Получаем сегодняшнюю дату
             var today = DateOnly.FromDateTime(DateTime.Today);
-
-            // Получаем только сегодняшние записи к этому врачу
             var appointments = db.Appointments
                 .Where(a => a.IdDoctor == doctor.IdDoctor &&
                            a.DateAppointment == today)
@@ -284,17 +349,17 @@ namespace Main_project.Scripts
                 .OrderBy(a => a.TimeAppointment)
                 .ToList();
 
-            var result = new List<(string Time, string PatientName)>();
+            var result = new List<(string Time, string PatientName, string BirthDate)>();
 
             foreach (var app in appointments)
             {
                 if (app.IdMedCardNavigation != null && app.TimeAppointment.HasValue)
                 {
-                    // Форматируем время как "00:00"
-                    string time = app.TimeAppointment.Value.ToString("hh\\:mm");
-                    string patientName = $"{app.IdMedCardNavigation.SurnameUsers} {app.IdMedCardNavigation.NameUsers[0]}";
+                    string time = app.TimeAppointment.Value.ToString("HH\\:mm");
+                    string patientName = $"{app.IdMedCardNavigation.SurnameUsers[0]}. {app.IdMedCardNavigation.NameUsers[0]}.";
+                    string birthDate = app.IdMedCardNavigation.DateBirth?.ToString("dd.MM.yyyy") ?? "не указана";
 
-                    result.Add((time, patientName));
+                    result.Add((time, patientName, birthDate));
                 }
             }
 

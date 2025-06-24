@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\scripts\\pdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\scripts\\pdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\views\\clinikmainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\views\\clinikmainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\views\\admin_panel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\views\\admin_panel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\views\\endappointment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\views\\endappointment.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\views\\clinikmainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\views\\clinikmainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|c:\\users\\\u0440\u0435\u0433\u0438\u043D\u0430\\desktop\\repositories\\appointment__clinik\\main_project\\main_project\\scripts\\pdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11CB89DE-9AED-4F9F-9F52-127D359F59D8}|Main_project\\Main_project.csproj|solutionrelative:main_project\\scripts\\pdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,8 +25,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 2685,
-          "SelectedChildIndex": 7,
+          "DockedWidth": 2549,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,8 +53,25 @@
               "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Admin_panel.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Views\\Admin_panel.xaml.cs",
+              "RelativeDocumentMoniker": "Main_project\\Views\\Admin_panel.xaml.cs",
+              "ToolTip": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Views\\Admin_panel.xaml.cs",
+              "RelativeToolTip": "Main_project\\Views\\Admin_panel.xaml.cs",
+              "ViewState": "AgIAAIMBAAAAAAAAAAAYwJ0BAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T23:06:56.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EndAppointment.xaml",
               "DocumentMoniker": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Views\\EndAppointment.xaml",
               "RelativeDocumentMoniker": "Main_project\\Views\\EndAppointment.xaml",
@@ -62,26 +83,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "PDF.cs",
               "DocumentMoniker": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Scripts\\PDF.cs",
               "RelativeDocumentMoniker": "Main_project\\Scripts\\PDF.cs",
-              "ToolTip": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Scripts\\PDF.cs*",
-              "RelativeToolTip": "Main_project\\Scripts\\PDF.cs*",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAYwP0AAAAVAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Scripts\\PDF.cs",
+              "RelativeToolTip": "Main_project\\Scripts\\PDF.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAHcAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-24T20:05:55.811Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ClinikMainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Views\\ClinikMainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Main_project\\Views\\ClinikMainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\\u0420\u0435\u0433\u0438\u043D\u0430\\Desktop\\repositories\\Appointment__Clinik\\Main_project\\Main_project\\Views\\ClinikMainWindow.xaml.cs*",
               "RelativeToolTip": "Main_project\\Views\\ClinikMainWindow.xaml.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-24T20:43:48.785Z",
               "EditorCaption": ""
@@ -89,7 +110,7 @@
           ]
         },
         {
-          "DockedWidth": 408,
+          "DockedWidth": 544,
           "SelectedChildIndex": -1,
           "Children": [
             {

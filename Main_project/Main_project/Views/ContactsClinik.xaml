@@ -52,7 +52,7 @@
                    FontSize="32" 
                    HorizontalAlignment="Left" VerticalAlignment="Top"
                    Grid.Row="0" Grid.Column="1"/>
-        <TextBlock Text="8 (347) 201-10-86"
+        <TextBlock Text="+7 (347) 201-10-86"
                    Foreground="#FF002558" 
                    FontSize="30"
                    FontFamily="Source Code Pro Semibold"

@@ -12,7 +12,6 @@ namespace Main_project.Views
             InitializeComponent();
             UpdateAppointmentStatuses();
             mainframe.NavigationService.Navigate(new SpecialtiesPage());
-            PDF.CreateTodaysAppointmentsPdf();
         }
 
         private void UpdateAppointmentStatuses()

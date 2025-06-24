@@ -1,4 +1,5 @@
 ﻿using Main_project.Models;
+using Main_project.Scripts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -398,7 +399,23 @@ namespace Main_project.Views
 
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-
+            if (datagrid.SelectedItem != null && cboxMode.SelectedIndex == 0)
+            {
+                try
+                {
+                    dynamic selectedItem = datagrid.SelectedItem;
+                    var surname = selectedItem.SurnameDoctor as string;
+                    var name = selectedItem.NameDoctor as string;
+                    var patronymic = selectedItem.PatronymicDoctor as string;
+                    string fullName = $"{surname} {name} {patronymic}".Trim();
+                    PDF.CreateTodaysAppointmentsPdf(fullName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при получении данных врача: {ex.Message}",
+                        "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }

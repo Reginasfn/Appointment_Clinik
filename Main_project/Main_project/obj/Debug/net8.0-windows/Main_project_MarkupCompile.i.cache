@@ -12,8 +12,8 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\App.xaml
 16-767482550
 
-28788849825
-220-1928873199
+29-1434069769
+226-132146829
 Controllers\DoctorsControl.xaml;Controllers\SpecialtyControl.xaml;Views\AboutClinik.xaml;Views\AddRedactDoctors.xaml;Views\AddRedactSched.xaml;Views\AddRedactSpecialities.xaml;Views\AddRedactUsers.xaml;Views\AdminAuth.xaml;Views\Admin_panel.xaml;Views\AllSpecialtiesPage.xaml;Views\AppointmentPage.xaml;Views\ClinikMainWindow.xaml;Views\ContactsClinik.xaml;Views\EndAppointment.xaml;Views\InformationDoctorPage.xaml;Views\SpecialtiesPage.xaml;
 
 False

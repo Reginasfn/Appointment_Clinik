@@ -52,14 +52,14 @@
             </Grid.ColumnDefinitions>
 
             <Label Content="R-Med" FontSize="23px" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="4"/>
-            <Label Content="Вы успешно записаны на приём!" FontSize="26px" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="1"/>
+            <Label Name="welcome" Content="Вы успешно записаны на приём!" FontSize="26px" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="1"/>
             <Label Name="date_lbl" Content="ДД.ММ." FontSize="45px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2"/>
             <Label Name="time_lbl" Content="00:00" FontSize="50px" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="3" Height="75"/>
 
             <Label Name="specialty_lbl" Content="Специализация врача" FontSize="20px" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="1"/>
-            <Label Name="fio_lbl" Content="ФИО врача" FontWeight="DemiBold" FontSize="25px" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1"/>
+            <Label Name="fio_lbl" FontWeight="DemiBold" FontSize="25px" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1"/>
             <Label Name="cabinet_lbl" Content="Кабинет № ______" FontWeight="Bold" FontSize="30px" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="5" Grid.Row="6" Grid.Column="1"/>
-            <Label Content="Адрес: г. Уфа, ул. Ленина,75" FontSize="20px" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="5" Grid.Row="7" Grid.Column="1"/>
+            <Label Name="address" FontSize="20px" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="5" Grid.Row="7" Grid.Column="1"/>
 
             <Separator Width="500" Height="20" Background="#FFA7A7A7" Grid.ColumnSpan="7" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <Label Content="Если Вы не можете прийти на приём в указанное время,&#x0a;сообщите об этом по телефону: +7-900-000-001" FontSize="18px" HorizontalAlignment="Center" VerticalAlignment="Center" Width="476" Grid.ColumnSpan="7" Grid.Row="8"/>

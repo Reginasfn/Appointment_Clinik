@@ -28,6 +28,14 @@ namespace Main_project.Views
             DataContext = user;
             getData();
             LoadData();
+            datagrid.SelectionChanged += Datagrid_SelectionChanged;
+        }
+        private void Datagrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Показываем кнопку печати только для врачей и когда есть выделенный элемент
+            btnPrint.Visibility = (cboxMode.SelectedIndex == 0 && datagrid.SelectedItem != null)
+                ? Visibility.Visible
+                : Visibility.Collapsed;
         }
         private void getData()
         {
@@ -68,6 +76,10 @@ namespace Main_project.Views
                 var pagedGames = doctorsfiltered.Skip((current_page - 1) * 10).Take(10).ToList();
                 currPageTblock.Text = $"{current_page}";
                 datagrid.ItemsSource = pagedGames;
+
+                btnPrint.Visibility = (datagrid.SelectedItem != null)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
             }
         }
         public void LoadUsers()
@@ -382,6 +394,11 @@ namespace Main_project.Views
                         MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

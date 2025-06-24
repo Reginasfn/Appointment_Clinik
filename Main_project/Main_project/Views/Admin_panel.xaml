@@ -99,6 +99,10 @@
                          MouseLeftButtonDown="arrowRight_MouseLeftButtonDown"/>
             </Border>
         </StackPanel>
+        <Button x:Name="btnPrint" Grid.Row="3"
+                Content="Печать" Width="80" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Margin="25" Click="btnPrint_Click" Visibility="Hidden"/>
+        
         <StackPanel Grid.Row="3"
                 Orientation="Horizontal" 
                 HorizontalAlignment="Center" 
@@ -108,8 +112,7 @@
 
             <Button x:Name="btnAdd"
                 Content="Добавить" 
-                Padding="10 2" Click="btnAdd_Click"
-                />
+                Padding="10 2" Click="btnAdd_Click"/>
 
             <Button x:Name="btnEdit"
                 Content="Редактировать" 

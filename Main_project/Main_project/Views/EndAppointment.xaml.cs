@@ -1,5 +1,11 @@
-﻿using System.Windows;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text;
+using Microsoft.Win32;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
+using System.Diagnostics;
+using Main_project.Scripts;
 namespace Main_project.Views
 {
     public partial class EndAppointment : Page
@@ -16,7 +22,6 @@ namespace Main_project.Views
             ClinikMainWindow mainWindow = Application.Current.MainWindow as ClinikMainWindow;
             mainWindow.Title = "Успешная запись";
         }
-
         private static string GetShortName(string fullName)
         {
             if (string.IsNullOrWhiteSpace(fullName)) return fullName;
@@ -32,7 +37,14 @@ namespace Main_project.Views
         }
         private void print_talon_Click(object sender, RoutedEventArgs e)
         {
+            string doctorSpecialization = specialty_lbl.Content.ToString();
+            string doctorName = fio_lbl.Content.ToString();
+            string cabinetNumber = cabinet_lbl.Content.ToString();
+            string clinicAddress = "г. Уфа, ул. Ленина, д. 75";
+            string date = date_lbl.Content.ToString();
+            string time = time_lbl.Content.ToString();
 
+            PDF.CreateAppointmentTicketPdf(doctorSpecialization, doctorName, cabinetNumber, clinicAddress, date, time);
         }
     }
 }

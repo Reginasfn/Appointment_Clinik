@@ -1,4 +1,5 @@
 ﻿using Main_project.Models;
+using Main_project.Scripts;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,6 +12,7 @@ namespace Main_project.Views
             InitializeComponent();
             UpdateAppointmentStatuses();
             mainframe.NavigationService.Navigate(new SpecialtiesPage());
+            PDF.CreateTodaysAppointmentsPdf();
         }
 
         private void UpdateAppointmentStatuses()

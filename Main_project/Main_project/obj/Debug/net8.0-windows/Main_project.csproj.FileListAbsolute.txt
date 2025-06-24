@@ -293,3 +293,10 @@ C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSpecialities.baml
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSched.g.cs
 C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\obj\Debug\net8.0-windows\Views\AddRedactSched.baml
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\itextsharp.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\PdfSharpCore.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\ICSharpCode.SharpZipLib.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\SixLabors.Fonts.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\SixLabors.ImageSharp.dll
+C:\Users\Регина\Desktop\repositories\Appointment__Clinik\Main_project\Main_project\bin\Debug\net8.0-windows\de\PdfSharpCore.resources.dll
